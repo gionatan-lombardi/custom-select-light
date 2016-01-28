@@ -4,7 +4,7 @@
     "url": "https://github.com/gionatan-lombardi"
   },
   "name": "custom-select-light",
-  "description": "A lightweight JS script for custom select creation."
+  "description": "A lightweight JS script for custom select creation.",
   "version": "1.0.0",
   "repository": {
     "type": "git",
