@@ -30,11 +30,8 @@ if (typeof jQuery === 'undefined') {
       };
       var optionsMarkup = "";
 
-      // On not mobile devices sets the right tabindex
-      if (!utility().isMobile()) {
-        $opener.attr('tabindex', "0");
-        $select.attr('tabindex', "-1");
-      }
+      // Add proper tabindex to the opener
+      $opener.attr('tabindex', "0");
 
       // Gets the values and the text of each option
       $select.find('option').each(function(index, value) {
