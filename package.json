@@ -1,0 +1,17 @@
+{
+  "author": {
+    "name": "Gionatan Lombardi",
+    "url": "https://github.com/gionatan-lombardi"
+  },
+  "name": "custom-select-light",
+  "description": "A lightweight JS script for custom select creation."
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gionatan-lombardi/custom-select-light.git"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4",
+  },
+  { "license" : "MIT" },
+}
