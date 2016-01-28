@@ -22,7 +22,6 @@ if (typeof jQuery === 'undefined') {
 
     this.each( function () {
 
-      console.log(self.opts);
       var $select = $(this);
       var $container, $opener, $panel, $cstOption, optionsData, searchTimeout, searchString = "";
 
@@ -73,7 +72,7 @@ if (typeof jQuery === 'undefined') {
         // Stores all the custom options in a global var
         optionsData.$items = $cstOption;
 
-        // If there is a preselected option updates the label
+        // If there is a preselected option updates the opener text
         if ($select.find('option:selected').text() !== "") updateLabelText.call($select);
       }
 
