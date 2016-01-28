@@ -16,11 +16,13 @@ if (typeof jQuery === 'undefined') {
 
   $.fn.customSelectLight = function( options ) {
    
+    var self = this;
     // Extend our default options with those provided.
-    var opts = $.extend( {}, $.fn.customSelectLight.defaults, options );
-  
+    self.opts = $.extend( {}, $.fn.customSelectLight.defaults, options );
+
     this.each( function () {
 
+      console.log(self.opts);
       var $select = $(this);
       var $container, $opener, $panel, $cstOption, optionsData, searchTimeout, searchString = "";
 
@@ -34,7 +36,7 @@ if (typeof jQuery === 'undefined') {
         };
 
         // Wrap the select in an outer div
-        $select.wrap('<div class="cstSelContainer ' + $.fn.customSelectLight.defaults.containerClass + '"></div>')
+        $select.wrap('<div class="cstSelContainer ' + self.opts.containerClass + '"></div>')
         $container = $select.closest('.cstSelContainer');
 
 
@@ -51,14 +53,14 @@ if (typeof jQuery === 'undefined') {
 
         // Creates the options HTML markup
         for (var i = 0; i < optionsData.value.length; i++) {
-          optionsMarkup += '<div class="cstSelOption ' + $.fn.customSelectLight.defaults.optionClass + '" data-val="' + optionsData.value[i] + '"><span>' + optionsData.text[i] + '</span></div>';
+          optionsMarkup += '<div class="cstSelOption ' + self.opts.optionClass + '" data-val="' + optionsData.value[i] + '"><span>' + optionsData.text[i] + '</span></div>';
         };
 
         // Creates the custom select HTML markup
-        var customSelectMarkup = '<div class="cstSelPanel ' + $.fn.customSelectLight.defaults.panelClass + '">' + optionsMarkup + '</div>';
+        var customSelectMarkup = '<div class="cstSelPanel ' + self.opts.panelClass + '">' + optionsMarkup + '</div>';
 
         // Writes the custom select opener before the select
-        $select.before('<span class="cstSelOpener ' + $.fn.customSelectLight.defaults.openerClass + '" tabindex="0"><span></span></span>')
+        $select.before('<span class="cstSelOpener ' + self.opts.openerClass + '" tabindex="0"><span></span></span>')
         
         // Writes the custom select HTML markup after the select
         $select.after(customSelectMarkup);
