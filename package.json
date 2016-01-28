@@ -1,6 +1,7 @@
 {
   "author": {
     "name": "Gionatan Lombardi",
+    "email": "gionatan.lombardi@gmail.com",
     "url": "https://github.com/gionatan-lombardi"
   },
   "name": "custom-select-light",
@@ -10,8 +11,11 @@
     "type": "git",
     "url": "https://github.com/gionatan-lombardi/custom-select-light.git"
   },
-  "dependencies": {
-    "jquery": "^2.1.4",
+  "bugs": {
+    "url": "https://github.com/gionatan-lombardi/custom-select-light/issues"
   },
-  "license" : "MIT",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  },
+  "license" : "MIT"
 }
