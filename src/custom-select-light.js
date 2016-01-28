@@ -268,5 +268,3 @@ function CustomSelect(elem, panelClass, optionClass) {
         init : init
     }
 };
-
-module.exports = CustomSelect;
