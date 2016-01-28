@@ -91,7 +91,8 @@ function CustomSelect(elem, panelClass, optionClass) {
         var label = $(this).find('span').text()
 
         // Set the value to the hidden select
-        $select.val(val).change();
+        // And triggers the change event for label text update
+        $select.val(val).trigger( "change" );
 
         // Writes the value in the custom label
         $opener.find('span').text(label);
