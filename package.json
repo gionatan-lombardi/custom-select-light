@@ -17,5 +17,6 @@
   "dependencies": {
     "jquery": "^2.1.4"
   },
-  "license" : "MIT"
+  "license" : "MIT",
+  "keywords": ["jQuery", "jQuery Plugin", "custom select"]
 }
