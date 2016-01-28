@@ -1,9 +1,18 @@
 {
   "author": {
     "name": "Gionatan Lombardi",
-    "email": "gionatan.lombardi@gmail.com",
     "url": "https://github.com/gionatan-lombardi"
   },
+  "contributors": [
+    {
+      "name": "Marco Nucara",
+      "url": "https://github.com/nuky89"
+    },
+    {
+      "name": "Simone Scalbi",
+      "url": "https://github.com/pennywiz"
+    },
+  ],
   "name": "custom-select-light",
   "description": "A lightweight JS script for custom select creation.",
   "version": "1.0.0",
