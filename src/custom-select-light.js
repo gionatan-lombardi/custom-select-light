@@ -15,7 +15,6 @@ function CustomSelect(elem, panelClass, optionClass) {
     function customSelectCreation () {
         optionsData = { value: [], text : [], $items: []};
         var optionsMarkup = "";
-        var optionStart = 0
 
         // On not mobile devices sets the right tabindex
         if ( !utility().isMobile() ) {
