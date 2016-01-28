@@ -17,7 +17,8 @@ if (typeof jQuery === 'undefined') {
   $.fn.customSelectLight = function( options ) {
    
     var self = this;
-    // Extend our default options with those provided.
+
+    // Extend the default options with those provided.
     self.opts = $.extend( {}, $.fn.customSelectLight.defaults, options );
 
     this.each( function () {
@@ -92,7 +93,6 @@ if (typeof jQuery === 'undefined') {
         e.stopPropagation();
       }
 
-      // Close Panel
       function closePanel() {
         $opener.removeClass('is-active');
         $panel.removeClass('is-open');
@@ -100,7 +100,7 @@ if (typeof jQuery === 'undefined') {
       }
 
       function togglePanel(e) {
-        if (!$panel.hasClass('is-open')) {
+        if (!isOpen()) {
           openPanel(e);
         } else {
           closePanel();
@@ -149,7 +149,7 @@ if (typeof jQuery === 'undefined') {
       function outsideClosePanel(e) {
         if (!$panel.is(e.target) // the click is not on the select
           && $panel.has(e.target).length === 0 // the click is not on a descendant of the select
-          && $panel.hasClass('is-open')
+          && isOpen()
         ) {
           closePanel();
         }
@@ -161,7 +161,7 @@ if (typeof jQuery === 'undefined') {
         // On "Space" key 
         // On "Arrow Down" key when panel is closed, 
         // Opens the Custom Select
-        if (e.keyCode == 32 || (e.keyCode == 40 && !$panel.hasClass('is-open'))) {
+        if (e.keyCode == 32 || (e.keyCode == 40 && !isOpen())) {
           e.preventDefault();
           togglePanel(e);
         }
@@ -172,14 +172,18 @@ if (typeof jQuery === 'undefined') {
           // If the panel is open
           // and there's a focused option
           // set the value from the focused option
-          if ($panel.hasClass('is-open') && $panel.find('.has-focus').length === 1) {
+          if (isOpen() && $panel.find('.has-focus').length === 1) {
             setSelectValue.call($panel.find('.has-focus'))
           }
         }
 
         // Only when the panel is open
-        if ($panel.hasClass('is-open')) {
+        if (isOpen()) {
 
+          // On "Tab" closes the panel
+          if (e.keyCode == 9) {
+            closePanel();
+          }
           // On "Arrow Down" focuses the next option or the first
           if (e.keyCode == 40) {
             e.preventDefault();
@@ -200,7 +204,7 @@ if (typeof jQuery === 'undefined') {
 
             // Otherwise start the search/autocomplete function
           } else {
-            if (typeof searchTimeout !== 'undefined') searchClearTimer(searchTimeout);
+            if (typeof searchTimeout !== 'undefined') searchTimerClear(searchTimeout);
             searchTimer(1500);
             var result = searchInPanel(e)
             if (result !== false) setFocus(result.$elem, result.elemIndex, true, true);
@@ -247,7 +251,7 @@ if (typeof jQuery === 'undefined') {
         // Search RegExp
         var searchRegExp = new RegExp("^" + searchString, "i");
 
-        // Loops throught the options values
+        // Loops through the options values
         // to find a match with the searched string
         optionsData.value.every(function(value, index) {
           if (value.match(searchRegExp)) {
@@ -266,14 +270,21 @@ if (typeof jQuery === 'undefined') {
         }
       }
 
+      // Timer for search string reset
       function searchTimer(ms) {
         searchTimeout = setTimeout(function() {
           searchString = "";
         }, ms);
       }
 
-      function searchClearTimer(id) {
+      function searchTimerClear(id) {
         clearTimeout(id);
+      }
+
+      // Utility function to check if the panel is open
+      function isOpen() {
+        if ( $panel.hasClass('is-open') ) return true;
+        return false;
       }
 
       // Public function
