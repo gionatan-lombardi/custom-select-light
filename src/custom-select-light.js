@@ -158,36 +158,36 @@ if (typeof jQuery === 'undefined') {
       // Keydown event handler
       function keydownPanelManager(e) {
 
-        // On "Space" key 
-        // On "Arrow Down" key when panel is closed, 
-        // Opens the Custom Select
-        if (e.keyCode == 32 || (e.keyCode == 40 && !isOpen())) {
-          e.preventDefault();
-          togglePanel(e);
-        }
+        // WITH CLOSED PANEL
+        if (!isOpen()) {
 
-        if (e.keyCode == 13) {
-          e.preventDefault();
-        }
-
-        // Only when the panel is open
-        if (isOpen()) {
-
-          // On "Tab" closes the panel
-          if (e.keyCode == 9) {
-            closePanel();
+          // On "Arrow down" and "Space" keys opens the panel
+          if (e.keyCode == 40 || e.keyCode == 32) {
+            e.preventDefault();
+            openPanel();
           }
 
-          // On "Enter" key
+        }
+
+        // WITH OPEN PANEL
+        if (isOpen()) {
+
+          // On "Enter" ir "Space" key
           // If there's a focused option
           // set the value from the focused option
-          if (e.keyCode == 13) {
+          if (e.keyCode == 13 || e.keyCode == 32) {
             e.preventDefault();
             if ( $panel.find('.has-focus').length === 1 ) {
               setSelectValue.call($panel.find('.has-focus'))
             }
           }
           
+          // On "Escape" closes the panel
+          if (e.keyCode == 27) {
+            e.preventDefault();
+            closePanel();
+          }
+
           // On "Arrow Down" focuses the next option or the first
           if (e.keyCode == 40) {
             e.preventDefault();
