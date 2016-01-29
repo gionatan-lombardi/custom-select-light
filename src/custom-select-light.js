@@ -164,7 +164,7 @@ if (typeof jQuery === 'undefined') {
           // On "Arrow down" and "Space" keys opens the panel
           if (e.keyCode == 40 || e.keyCode == 32) {
             e.preventDefault();
-            openPanel();
+            openPanel(e);
           }
 
         }
