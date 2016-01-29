@@ -166,15 +166,8 @@ if (typeof jQuery === 'undefined') {
           togglePanel(e);
         }
 
-        // On "Enter" key
         if (e.keyCode == 13) {
           e.preventDefault();
-          // If the panel is open
-          // and there's a focused option
-          // set the value from the focused option
-          if (isOpen() && $panel.find('.has-focus').length === 1) {
-            setSelectValue.call($panel.find('.has-focus'))
-          }
         }
 
         // Only when the panel is open
@@ -184,6 +177,17 @@ if (typeof jQuery === 'undefined') {
           if (e.keyCode == 9) {
             closePanel();
           }
+
+          // On "Enter" key
+          // If there's a focused option
+          // set the value from the focused option
+          if (e.keyCode == 13) {
+            e.preventDefault();
+            if ( $panel.find('.has-focus').length === 1 ) {
+              setSelectValue.call($panel.find('.has-focus'))
+            }
+          }
+          
           // On "Arrow Down" focuses the next option or the first
           if (e.keyCode == 40) {
             e.preventDefault();
