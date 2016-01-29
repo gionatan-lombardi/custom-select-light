@@ -162,7 +162,7 @@ if (typeof jQuery === 'undefined') {
         if (!isOpen()) {
 
           // On "Arrow down" and "Space" keys opens the panel
-          if (e.keyCode == 40 || e.keyCode == 32) {
+          if (e.keyCode == 40) {
             e.preventDefault();
             openPanel(e);
           }
@@ -172,10 +172,10 @@ if (typeof jQuery === 'undefined') {
         // WITH OPEN PANEL
         if (isOpen()) {
 
-          // On "Enter" ir "Space" key
+          // On "Enter"
           // If there's a focused option
-          // set the value from the focused option
-          if (e.keyCode == 13 || e.keyCode == 32) {
+          // sets the value from it
+          if (e.keyCode == 13) {
             e.preventDefault();
             if ( $panel.find('.has-focus').length === 1 ) {
               setSelectValue.call($panel.find('.has-focus'))
@@ -213,7 +213,24 @@ if (typeof jQuery === 'undefined') {
             var result = searchInPanel(e)
             if (result !== false) setFocus(result.$elem, result.elemIndex, true, true);
           }
+
         }
+
+        // ON RUNTIME CHECK
+
+          // On "Space" keys opens the panel if closed
+          // Otherwise if there's a focused option
+          // sets the value from it
+          if ( e.keyCode == 32 ) {
+            e.preventDefault();
+            ( function checkSetAndToggle (e) {
+              if ( !isOpen() ) openPanel(e);
+              else if ( $panel.find('.has-focus').length === 1 ) {
+                setSelectValue.call($panel.find('.has-focus'))
+              }
+            })(e);
+          }
+
       }
 
       // Set the Focus state on the options
@@ -316,7 +333,7 @@ if (typeof jQuery === 'undefined') {
 
   };
 
-  // Default options
+  // Default Plugin Options
   $.fn.customSelectLight.defaults = {
     panelClass: 'custom-select-panel',
     optionClass: 'custom-select-option',
