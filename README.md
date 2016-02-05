@@ -10,7 +10,7 @@ Start with a simple select:
     <option value="buzz">Buzz</option>
 </select>
 ```
-With JS simply apply the plugin to your select:
+With jQuery simply apply the plugin to your select:
 ```javascript
 $('#mySelect').customSelectLight()
 ```
