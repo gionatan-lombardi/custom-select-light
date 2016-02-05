@@ -35,3 +35,5 @@ Here's the HTML result:
 The `<select>`'ll be wrapped in a div `.cstSelContainer`, an opener `.cstSelOpener` and a panel `.cstSelPanel`, will'be created, with the cloned options from the original `<select>`.
 
 That's all! Show, hide and styles will'be managed via css.
+
+**And now have fun.**
