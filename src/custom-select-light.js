@@ -274,7 +274,7 @@ if (typeof jQuery === 'undefined') {
 
         // Loops through the options values
         // to find a match with the searched string
-        optionsData.value.every(function(value, index) {
+        optionsData.text.every(function(value, index) {
           if (value.match(searchRegExp)) {
             $elem = $(optionsData.$items[index]);
             elemIndex = index;
