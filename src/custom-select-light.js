@@ -138,7 +138,6 @@ if (typeof jQuery === 'undefined') {
         var value = $select.val();
         $cstOption.each(function(index) {
           if ($(this).attr('data-val') === value) {
-            $(this).addClass('has-focus');
             $elem = $(this);
             elemIndex = index;
           }
