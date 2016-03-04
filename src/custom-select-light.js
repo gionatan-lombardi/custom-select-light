@@ -90,8 +90,6 @@ if (typeof jQuery === 'undefined') {
         $opener.addClass('is-active');
         $panel.addClass('is-open');
 
-        // Prevents document.click event fireing
-        e.stopPropagation();
       }
 
       function closePanel() {
@@ -147,8 +145,9 @@ if (typeof jQuery === 'undefined') {
 
       // Ouside panel closing function
       function outsideClosePanel(e) {
-        if (!$panel.is(e.target) // the click is not on the select
-          && $panel.has(e.target).length === 0 // the click is not on a descendant of the select
+        if (
+          !$opener.is(e.target) // the click is not on the opener
+          && $opener.has(e.target).length === 0 // the click is not on a descendant of the opener
           && isOpen()
         ) {
           closePanel();
