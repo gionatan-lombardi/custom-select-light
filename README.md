@@ -37,3 +37,32 @@ The `<select>`'ll be wrapped in a div `.cstSelContainer`, an opener `.cstSelOpen
 That's all! Show, hide and styles will'be managed via css.
 
 **And now have fun.**
+
+## Options
+
+### panelClass
+Type: `string`
+
+Default: `custom-select-panel`
+
+### optionClass
+Type: `string`
+
+Default: `custom-select-option`
+
+### openerClass
+Type: `string`
+
+Default: `custom-select-opener`
+
+### containerClass
+Type: `string`
+
+Default: `custom-select-container`
+
+### scrollToSelected
+Type: `boolean`
+
+Default: `true`
+
+Sometimes it is useful to skip the scroll to setted element function, to avoid some unwanted css animations behaviours, especially when the panel has an `absolute` position.
