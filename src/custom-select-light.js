@@ -79,9 +79,6 @@ if (typeof jQuery === 'undefined') {
 
       // Open Panel
       function openPanel(e) {
-        // Sets the selected option
-        setSelectedOption();
-
         // Closes all opened panels
         $('.cstSelLabel').removeClass('is-active');
         $('.cstSelPanel').removeClass('is-open');
@@ -90,6 +87,8 @@ if (typeof jQuery === 'undefined') {
         $opener.addClass('is-active');
         $panel.addClass('is-open');
 
+        // Sets the selected option
+        setSelectedOption();
       }
 
       function closePanel() {
@@ -248,9 +247,14 @@ if (typeof jQuery === 'undefined') {
 
           // Set the Scrollbar position relative to the focused element
           var gotoPos = $elem.height() * elemIndex;
-          $panel.stop().animate({
-            scrollTop: gotoPos
-          }, duration);
+
+          // Scrolls to the selected element
+          // if plugin scrollToSelectd option is setted to true
+          if (self.opts.scrollToSelected) {
+            $panel.stop().animate({
+              scrollTop: gotoPos
+            }, duration);
+          }
         }
       }
 
@@ -337,7 +341,8 @@ if (typeof jQuery === 'undefined') {
     panelClass: 'custom-select-panel',
     optionClass: 'custom-select-option',
     openerClass: 'custom-select-opener',
-    containerClass: 'custom-select-container'
+    containerClass: 'custom-select-container',
+    scrollToSelected: true
   };
 
 })(jQuery);
