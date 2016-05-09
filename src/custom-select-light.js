@@ -315,19 +315,23 @@ if (typeof jQuery === 'undefined') {
       function init() {
         // Custom select creation
         customSelectCreation();
-        // Event listeners
-        $opener.on("click.customSelect", togglePanel);
-        $opener.on("keydown.customSelect", function(e) {
-          keydownPanelManager(e);
-        });
-        $cstOption.on("click.customSelect", setSelectValue);
-        $cstOption.on("mouseover.customSelect", function(e) {
-          setFocus($(this));
-        });
-        $select.on('change.customSelect', function(e) {
-          updateLabelText.call($(e.currentTarget));
-        });
-        $(document).on("click.customSelect", outsideClosePanel);
+        if($select.is("[disabled]")){
+          $container.addClass("is-disabled");
+        }else{
+          // Event listeners
+          $opener.on("click.customSelect", togglePanel);
+          $opener.on("keydown.customSelect", function(e) {
+            keydownPanelManager(e);
+          });
+          $cstOption.on("click.customSelect", setSelectValue);
+          $cstOption.on("mouseover.customSelect", function(e) {
+            setFocus($(this));
+          });
+          $select.on('change.customSelect', function(e) {
+            updateLabelText.call($(e.currentTarget));
+          });
+          $(document).on("click.customSelect", outsideClosePanel);
+        }
       };
 
       init();
