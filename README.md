@@ -14,7 +14,7 @@ Start with a simple select:
 
 With jQuery simply apply the plugin to your select:
 ```javascript
-$('#mySelect').customSelectLight()
+$('#mySelect').customSelectLight();
 ```
 
 Here's the HTML result:
@@ -68,3 +68,35 @@ Type: `boolean`
 Default: `true`
 
 Sometimes it is useful to skip the scroll to setted element function, to avoid some unwanted css animations behaviours, especially when the panel has an `absolute` position.
+
+## Methods
+To use the plugin public methods:
+`$(selector).customSelectLight( methodName [, ...arguments])`
+
+```javascript
+$('#mySelect').customSelectLight();
+$('#mySelect').customSelectLight('add', [['liz','Liz'],['nut','Nut']]);
+```
+
+### 'remove'
+Argument: `Array`
+
+Usage: `$('#mySelect').customSelectLight('remove', ['foo', 'bazz']);`
+
+Removes the select options that have the value provided.
+If no argument is given triggers the 'empty' method.
+
+### 'empty'
+Argument: none
+
+Usage: `$('#mySelect').customSelectLight('empty')`
+
+Removes all the select options.
+
+### 'add'
+Argument: `2D Array`
+
+Usage: `$('#mySelect').customSelectLight('add', [['liz','Liz'],['nut','Nut']])`
+
+Adds new options to the select.
+The first element of the argument's array is the **value**, the second is the **label**
