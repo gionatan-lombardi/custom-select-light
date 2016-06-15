@@ -73,11 +73,6 @@ Sometimes it is useful to skip the scroll to setted element function, to avoid s
 To use the plugin public methods:
 `$(selector).customSelectLight( methodName [, ...arguments])`
 
-```javascript
-$('#mySelect').customSelectLight();
-$('#mySelect').customSelectLight('add', [['liz','Liz'],['nut','Nut']]);
-```
-
 ### 'remove'
 Argument: `Array`
 
