@@ -10,6 +10,8 @@ Start with a simple select:
     <option value="buzz">Buzz</option>
 </select>
 ```
+**Important**: Don't nest the select inside a label, use instead the `for` attribute in the label
+
 With jQuery simply apply the plugin to your select:
 ```javascript
 $('#mySelect').customSelectLight()

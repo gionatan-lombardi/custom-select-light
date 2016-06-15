@@ -312,19 +312,25 @@ if (typeof jQuery === 'undefined') {
       function init() {
         // Custom select creation
         customSelectCreation();
-        // Event listeners
-        self.$opener.on("click.customSelect", togglePanel);
-        self.$opener.on("keydown.customSelect", function(e) {
-          keydownPanelManager(e);
-        });
-        self.$cstOptions.on("click.customSelect", setSelectValue);
-        self.$cstOptions.on("mouseover.customSelect", function(e) {
-          setFocus($(this));
-        });
-        self.$select.on('change.customSelect', function(e) {
-          updateLabelText.call($(e.currentTarget));
-        });
-        $(document).on("click.customSelect", outsideClosePanel);
+        // If the select is disables add a class
+        // and skip event listeners adding
+        if(self.$select.is("[disabled]")) {
+          self.$container.addClass("is-disabled");
+        } else {
+          // Event listeners
+          self.$opener.on("click.customSelect", togglePanel);
+          self.$opener.on("keydown.customSelect", function(e) {
+            keydownPanelManager(e);
+          });
+          self.$cstOptions.on("click.customSelect", setSelectValue);
+          self.$cstOptions.on("mouseover.customSelect", function(e) {
+            setFocus($(this));
+          });
+          self.$select.on('change.customSelect', function(e) {
+            updateLabelText.call($(e.currentTarget));
+          });
+          $(document).on("click.customSelect", outsideClosePanel);
+        }
       };
 
       init();
