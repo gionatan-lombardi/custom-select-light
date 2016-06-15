@@ -322,8 +322,8 @@ if (typeof jQuery === 'undefined') {
           self.$opener.on("keydown.customSelect", function(e) {
             keydownPanelManager(e);
           });
-          self.$cstOptions.on("click.customSelect", setSelectValue);
-          self.$cstOptions.on("mouseover.customSelect", function(e) {
+          self.$panel.on("click.customSelect", '.cstSelOption', setSelectValue);
+          self.$panel.on("mouseover.customSelect", '.cstSelOption', function(e) {
             setFocus($(this));
           });
           self.$select.on('change.customSelect', function(e) {
