@@ -58,8 +58,6 @@ if (typeof jQuery === 'undefined') {
           self.optgroups[$(this).attr('label')] = $('option', this).first().val();
         });
 
-        console.log(self.optgroups);
-
         // Creates the options HTML markup
         $.each(self.optionsData.value, function(index, value) {
           $.each(self.optgroups, function(key, v) {
@@ -212,6 +210,8 @@ if (typeof jQuery === 'undefined') {
             } else {
               var $toBeFocused = $(self.$panel.find('.cstSelOption').get(0));
             }
+            if ( $toBeFocused.length < 1 )
+              var $toBeFocused = $(self.$panel.find('.cstSelOption').get(0));
             setFocus($toBeFocused, self.$cstOptions.index($toBeFocused), true, true);
 
             // On "Arrow Up" focuses the prev option
@@ -265,7 +265,10 @@ if (typeof jQuery === 'undefined') {
           var duration = isAnimated ? 100 : 0;
 
           // Set the Scrollbar position relative to the focused element
-          var gotoPos = $elem.height() * elemIndex;
+          var gotoPos = 0;
+          $elem.prevAll().each(function() {
+            gotoPos += $(this).height();
+          });
 
           // Scrolls to the selected element
           // if plugin scrollToSelectd option is setted to true
