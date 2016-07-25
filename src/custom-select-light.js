@@ -31,8 +31,11 @@ if (typeof jQuery === 'undefined') {
         self.optionsData = {
           value: [],
           text: [],
-          $items: []
+          $items: [],
         };
+
+        self.optgroups = {
+        }
 
         // Wrap the select in an outer div 
         self.$select.wrap('<div class="cstSelContainer ' + self.options.containerClass + '"></div>')
@@ -49,10 +52,22 @@ if (typeof jQuery === 'undefined') {
           }
         })
 
+        // Gets the lables of the optgroups if present
+        self.$select.find('optgroup').each(function(index, value) {
+          // Stores the data only if the option has a value
+          self.optgroups[$(this).attr('label')] = $('option', this).first().val();
+        });
+
+        console.log(self.optgroups);
+
         // Creates the options HTML markup
-        for (var i = 0; i < self.optionsData.value.length; i++) {
-          optionsMarkup += '<div class="cstSelOption ' + self.options.optionClass + '" data-val="' + self.optionsData.value[i] + '"><span>' + self.optionsData.text[i] + '</span></div>';
-        };
+        $.each(self.optionsData.value, function(index, value) {
+          $.each(self.optgroups, function(key, v) {
+            if (value === v)
+              optionsMarkup += '<div class="cstSelOptgroup ' + self.options.optgroupClass + '"><span>' + key + '</span></div>';
+          });
+          optionsMarkup += '<div class="cstSelOption ' + self.options.optionClass + '" data-val="' + self.optionsData.value[index] + '"><span>' + self.optionsData.text[index] + '</span></div>';
+        });
 
         // Creates the custom select HTML markup
         var customSelectMarkup = '<div class="cstSelPanel ' + self.options.panelClass + '">' + optionsMarkup + '</div>';
@@ -191,10 +206,11 @@ if (typeof jQuery === 'undefined') {
           // On "Arrow Down" focuses the next option or the first
           if (e.keyCode == 40) {
             e.preventDefault();
-            if (self.$panel.find('.has-focus').length === 1) {
-              var $toBeFocused = self.$panel.find('.has-focus').next()
+            if (self.$panel.find('.cstSelOption.has-focus').length === 1) {
+              var indexOfOption = self.$panel.find('.cstSelOption').index(self.$panel.find('.cstSelOption.has-focus')) + 1;
+              var $toBeFocused = $(self.$panel.find('.cstSelOption').get(indexOfOption));
             } else {
-              var $toBeFocused = self.$cstOptions.first();
+              var $toBeFocused = $(self.$panel.find('.cstSelOption').get(0));
             }
             setFocus($toBeFocused, self.$cstOptions.index($toBeFocused), true, true);
 
@@ -202,7 +218,8 @@ if (typeof jQuery === 'undefined') {
           } else if (e.keyCode == 38) {
             e.preventDefault();
             if (self.$panel.find('.has-focus').length === 1) {
-              var $toBeFocused = self.$panel.find('.has-focus').prev();
+              var indexOfOption = self.$panel.find('.cstSelOption').index(self.$panel.find('.cstSelOption.has-focus')) - 1
+              var $toBeFocused = $(self.$panel.find('.cstSelOption').get(indexOfOption));
               setFocus($toBeFocused, self.$cstOptions.index($toBeFocused), true, true);
             }
 
@@ -435,6 +452,7 @@ if (typeof jQuery === 'undefined') {
   $.fn.customSelectLight.defaults = {
     panelClass: 'custom-select-panel',
     optionClass: 'custom-select-option',
+    optgroupClass: 'custom-select-optgroup',
     openerClass: 'custom-select-opener',
     containerClass: 'custom-select-container',
     scrollToSelected: true
