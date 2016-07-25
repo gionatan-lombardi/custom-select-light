@@ -125,6 +125,10 @@ if (typeof jQuery === 'undefined') {
 
       // On real select changes, updates the text of the label
       function updateLabelText() {
+        self.$cstOptions.removeClass('is-selected');
+        self.$cstOptions.filter(function(i, el){
+          return $(el).attr("data-val") === self.$select.find('option:selected').val()
+        }).addClass('is-selected');
         self.$opener.find('span').text(this.find('option:selected').text());
       }
 
