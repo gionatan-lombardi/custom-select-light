@@ -267,7 +267,7 @@ if (typeof jQuery === 'undefined') {
           // Set the Scrollbar position relative to the focused element
           var gotoPos = 0;
           $elem.prevAll().each(function() {
-            gotoPos += $(this).height();
+            gotoPos += $(this).outerHeight();
           });
 
           // Scrolls to the selected element
