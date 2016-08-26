@@ -91,7 +91,7 @@ if (typeof jQuery === 'undefined') {
       // Open Panel
       function openPanel(e) {
         // Closes all opened panels
-        $('.cstSelLabel').removeClass('is-active');
+        $('.cstSelOpener').removeClass('is-active');
         $('.cstSelPanel').removeClass('is-open');
 
         // Opens only the clicked one
