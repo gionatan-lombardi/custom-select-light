@@ -3,8 +3,8 @@ A lightweight jQuery plugin for custom select creation.
 
 ## No more supported
 This plugin was totally rewritten and finally **custom-select has born**!  
-(View on github](https://github.com/custom-select/custom-select).  
-(View on npmjs](https://www.npmjs.com/package/custom-select).  
+[View on github](https://github.com/custom-select/custom-select).  
+[View on npmjs](https://www.npmjs.com/package/custom-select).  
 
 **custom-select-light is no more supported.**
 
