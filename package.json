@@ -15,7 +15,7 @@
   ],
   "name": "custom-select-light",
   "description": "A lightweight JS script for custom select creation.",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "main": "src/custom-select-light.js",
   "repository": {
     "type": "git",
